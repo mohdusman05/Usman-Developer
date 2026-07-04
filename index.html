@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mohd Usman | Developer</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+    * {margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif;}
+    body {background: #0a0a0f; color: #fff; line-height: 1.7;}
+    a {text-decoration: none; color: #00d9ff;}
+    .container {max-width: 1200px; margin: auto; padding: 60px 20px;}
+    
+    nav {background: rgba(15, 23, 42, 0.8); backdrop-filter: blur(10px); padding: 18px 25px; display: flex; justify-content: space-between; align-items: center; position: sticky; top: 0; z-index: 100; border-bottom: 1px solid rgba(255,255,255,0.1);}
+    .logo {font-size: 1.8rem; font-weight: 700; background: linear-gradient(45deg, #00d9ff, #7c3aed); -webkit-background-clip: text; -webkit-text-fill-color: transparent;}
+    nav ul {display: flex; list-style: none; gap: 30px;}
+    nav ul li a {color: #cbd5e1; font-weight: 500; transition: 0.3s; cursor: pointer;}
+    nav ul li a.active, nav ul li a:hover {color: #00d9ff;}
+    .menu {display: none; font-size: 1.8rem; cursor: pointer; color: #00d9ff;}
+    
+    .hero {text-align: center; padding: 100px 20px; background: radial-gradient(circle at top, #1e1b4b 0%, #0a0a0f 70%); position: relative; overflow: hidden;}
+    .hero h1 {font-size: 3.5rem; margin-bottom: 20px;}
+    .hero h1 span {background: linear-gradient(45deg, #facc15, #f97316); -webkit-background-clip: text; -webkit-text-fill-color: transparent;}
+    .hero p {color: #94a3b8; max-width: 650px; margin: 0 auto 30px; font-size: 1.1rem;}
+    .btn-group {display: flex; gap: 20px; justify-content: center; flex-wrap: wrap;}
+    .btn {background: linear-gradient(45deg, #00d9ff, #7c3aed); color: #fff; padding: 14px 32px; border-radius: 50px; font-weight: 600; border: none; cursor: pointer; box-shadow: 0 4px 15px rgba(0,217,255,0.4); transition: 0.3s;}
+    .btn:hover {transform: translateY(-2px); box-shadow: 0 6px 20px rgba(0,217,255,0.6);}
+    .btn-outline {border: 2px solid #00d9ff; color: #00d9ff; padding: 12px 32px; border-radius: 50px; font-weight: 600; transition: 0.3s;}
+    .btn-outline:hover {background: #00d9ff; color: #0a0a0f;}
+    
+    .features {display: grid; grid-template-columns: repeat(auto-fit,minmax(280px,1fr)); gap: 30px; padding: 80px 20px; max-width: 1200px; margin: auto;}
+    .card {background: linear-gradient(135deg, rgba(30,27,75,0.6) 0%, rgba(15,23,42,0.6) 100%); padding: 35px; border-radius: 20px; text-align: center; border: 1px solid rgba(255,255,255,0.1); transition: 0.4s;}
+    .card:hover {transform: translateY(-8px); border-color: #00d9ff; box-shadow: 0 10px 30px rgba(0,217,255,0.2);}
+    .card h3 {color: #facc15; margin-bottom: 15px; font-size: 1.4rem;}
+    .card p {color: #94a3b8;}
+    
+    .page-header {text-align: center; padding: 80px 20px; background: linear-gradient(135deg, #1e1b4b 0%, #0a0a0f 100%);}
+    .page-header h1 {font-size: 3rem; background: linear-gradient(45deg, #00d9ff, #facc15); -webkit-background-clip: text; -webkit-text-fill-color: transparent;}
+    .page-header p {color: #94a3b8; margin-top: 10px;}
+    
+    .owner-card {background: linear-gradient(135deg, rgba(124,58,237,0.3) 0%, rgba(0,217,255,0.3) 100%); padding: 50px; border-radius: 25px; text-align: center; border: 2px solid #00d9ff; max-width: 600px; margin: 40px auto; box-shadow: 0 10px 40px rgba(0,217,255,0.3);}
+    .owner-card img {width: 180px; height: 180px; border-radius: 50%; border: 4px solid #facc15; margin-bottom: 25px; object-fit: cover; box-shadow: 0 8px 25px rgba(250,204,21,0.4);}
+    .owner-card h2 {font-size: 2.5rem; margin-bottom: 10px; background: linear-gradient(45deg, #facc15, #f97316); -webkit-background-clip: text; -webkit-text-fill-color: transparent;}
+    .owner-card p {color: #cbd5e1; font-size: 1.1rem; margin: 8px 0;}
+    .owner-card .tag {display: inline-block; background: #7c3aed; color: #fff; padding: 6px 18px; border-radius: 20px; font-size: 0.9rem; margin-top: 15px;}
+    
+    footer {text-align: center; padding: 40px 20px; background: #0f172a; color: #64748b; margin-top: 60px; border-top: 1px solid rgba(255,255,255,0.1);}
+    footer a {color: #00d9ff;}
+    
+    .page {display: none;}
+    .page.active {display: block;}
+    
+    @media(max-width:768px){
+      nav ul {display: none; flex-direction: column; position: absolute; top: 70px; left: 0; width: 100%; background: rgba(15, 23, 42, 0.95); padding: 25px;}
+      nav ul.show {display: flex;}
+      .menu {display: block;}
+      .hero h1 {font-size: 2.5rem;}
+      .btn-group {flex-direction: column; align-items: center;}
+      .btn, .btn-outline {width: 80%; max-width: 300px;}
+      .owner-card {padding: 30px; margin: 20px;}
+      .owner-card img {width: 140px; height: 140px;}
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <div class="logo">Mohd <span>Usman</span></div>
+    <div class="menu" onclick="toggleMenu()">☰</div>
+    <ul id="navLinks">
+      <li><a onclick="showPage('home')" class="active">Home</a></li>
+      <li><a onclick="showPage('about')">About</a></li>
+      <li><a onclick="showPage('services')">Services</a></li>
+      <li><a onclick="showPage('owner')">Owner</a></li>
+      <li><a onclick="showPage('contact')">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- HOME PAGE -->
+  <div id="home" class="page active">
+    <section class="hero">
+      <h1>Professional Website Developer <span>Jaipur</span></h1>
+      <p>Main Mohd Usman - Business ke liye fast, modern aur mobile-friendly websites banata hun. 3 din me delivery.</p>
+      <div class="btn-group">
+        <a href="https://wa.me/917891861985?text=Hi%20Mohd%20Usman,%20Mujhe%20website%20banwani%20hai" class="btn">WhatsApp Karo</a>
+        <a onclick="showPage('services')" class="btn-outline">Services Dekho</a>
+      </div>
+    </section>
+    <section class="features">
+      <div class="card"><h3>⚡ 3 Din Me Ready</h3><p>Jaldi chahiye? Basic website 72 ghante me live.</p></div>
+      <div class="card"><h3>📱 Mobile Friendly</h3><p>Har phone, tablet, laptop me perfect chalegi.</p></div>
+      <div class="card"><h3>💰 Affordable Price</h3><p>Churu ke hisab se rate. Student/business sab ke liye.</p></div>
+    </section>
+  </div>
+
+  <!-- ABOUT PAGE -->
+  <div id="about" class="page">
+    <section class="page-header">
+      <h1>About Me</h1>
+      <p>Kaun hai Mohd Usman?</p>
+    </section>
+    <section class="container">
+      <h2 style="font-size: 2.2rem; margin-bottom: 20px; background: linear-gradient(45deg, #00d9ff, #7c3aed); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">Hi, Main Mohd Usman </h2>
+      <p style="color: #94a3b8; margin-bottom: 15px;">Main Jaipur, Rajasthan se ek freelance web developer hun. Pichle 2 saal se local business, dukandaar aur students ke liye websites bana raha hun.</p>
+      <p style="color: #94a3b8; margin-bottom: 15px;"><b style="color: #00d9ff;">Mera Mission:</b> Jaipur ke har chote business ki apni website ho - bina ₹50,000 kharch kiye.</p>
+      <p style="color: #94a3b8; margin-bottom: 15px;"><b style="color: #00d9ff;">Skills:</b> WordPress, HTML/CSS, E-commerce, Speed Optimization, SEO Basic</p>
+      <a onclick="showPage('contact')" class="btn">Project Discuss Kare</a>
+    </section>
+  </div>
+
+  <!-- SERVICES PAGE -->
+  <div id="services" class="page">
+    <section class="page-header">
+      <h1>My Services</h1>
+      <p>Kya kya banata hun?</p>
+    </section>
+    <section class="features">
+      <div class="card">
+        <h3>1. Business Website</h3>
+        <p>5 Page website - Home, About, Services, Gallery, Contact. ₹4,999 se start</p>
+        <a href="https://wa.me/917891861985?text=Business%20Website%20ka%20rate%20batao" class="btn" style="padding: 10px 20px; font-size: 0.9rem; margin-top: 15px;">Enquiry Karo</a>
+      </div>
+      <div class="card">
+        <h3>2. E-Commerce Store</h3>
+        <p>Product upload, Payment Gateway, WhatsApp Order. ₹9,999 se start</p>
+        <a href="https://wa.me/917891861985?text=Ecommerce%20Website%20banwani%20hai" class="btn" style="padding: 10px 20px; font-size: 0.9rem; margin-top: 15px;">Enquiry Karo</a>
+      </div>
+      <div class="card">
+        <h3>3. Portfolio Website</h3>
+        <p>Students, Photographer, Artist ke liye. ₹2,999 se start</p>
+        <a href="https://wa.me/917891861985?text=Portfolio%20Website%20chahiye" class="btn" style="padding: 10px 20px; font-size: 0.9rem; margin-top: 15px;">Enquiry Karo</a>
+      </div>
+      <div class="card">
+        <h3>4. Website Speed Fix</h3>
+        <p>Slow website? 2 din me 90+ Google Score. ₹1,499 only</p>
+        <a href="https://wa.me/917891861985?text=Website%20Speed%20Fix%20karni%20hai" class="btn" style="padding: 10px 20px; font-size: 0.9rem; margin-top: 15px;">Enquiry Karo</a>
+      </div>
+    </section>
+  </div>
+
+  <!-- OWNER PAGE - TERI PHOTO KE SAATH -->
+  <div id="owner" class="page">
+    <section class="page-header">
+      <h1>Website Owner</h1>
+      <p>Is website ke malik</p>
+    </section>
+    <section class="container">
+      <div class="owner-card">
+        <!-- YAHAN PHOTO KA LINK DALNA HAI ↓↓ -->
+        <img src="https://i.postimg.cc/MKBmq1Pt/IMG-2003-2.jpg" alt="Mohd Usman">
+        <h2>Mohd Usman</h2>
+        <p><b>Founder & Developer</b></p>
+        <p>📍 Jaipur, Rajasthan</p>
+        <p>💼 Full Stack Web Developer</p>
+        <p style="margin-top: 20px; color: #94a3b8;">"Har business ki online pehchaan honi chahiye. Main yahan Jaipur ke local business ko digital banane ke mission pe hun."</p>
+        <div class="tag">Verified Owner</div>
+        <br><br>
+        <a href="https://wa.me/917891861985?text=Hi%20Mohd%20Usman,%20Aapki%20website%20dekhi" class="btn">Contact Me</a>
+      </div>
+    </section>
+  </div>
+
+  <!-- CONTACT PAGE -->
+  <div id="contact" class="page">
+    <section class="page-header">
+      <h1>Contact Me</h1>
+      <p>Project hai? Baat karte hain</p>
+    </section>
+    <section class="container">
+      <h3 style="font-size: 1.8rem; margin-bottom: 25px; color: #facc15;">Direct Contact</h3>
+      <p style="margin: 15px 0; color: #94a3b8;"><b style="color: #00d9ff;">📞 Phone:</b> <a href="tel:+917891861985">+91 7891861985</a></p>
+      <p style="margin: 15px 0; color: #94a3b8;"><b style="color: #00d9ff;">📧 Email:</b> <a href="mailto:usman.dev85@gmail.com">usman.dev85@gmail.com</a></p>
+      <p style="margin: 15px 0; color: #94a3b8;"><b style="color: #00d9ff;">📍 Location:</b> Jaipur, Rajasthan</p>
+      <p style="margin: 15px 0; color: #94a3b8;"><b style="color: #00d9ff;">👤 Owner:</b> Mohd Usman</p>
+      <a href="https://wa.me/917891861985" class="btn">WhatsApp Pe Message</a>
+    </section>
+  </div>
+
+  <footer>
+    <p>© 2026 Mohd Usman | Jaipur, Rajasthan | <a href="tel:+917891861985">Call Now</a></p>
+  </footer>
+
+  <script>
+    function toggleMenu() {
+      document.getElementById('navLinks').classList.toggle('show');
+    }
+    
+    function showPage(pageId) {
+      document.querySelectorAll('.page').forEach(page => page.classList.remove('active'));
+      document.getElementById(pageId).classList.add('active');
+      document.querySelectorAll('nav a').forEach(link => link.classList.remove('active'));
+      event.target.classList.add('active');
+      document.getElementById('navLinks').classList.remove('show');
+      window.scrollTo(0,0);
+    }
+  </script>
+</body>
+</html>
